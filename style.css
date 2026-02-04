@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 40%),
+        linear-gradient(135deg, #020617, #000000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.todo-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 25px;
+
+    background: rgba(15, 23, 42, 0.55); /* transparent glass */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 3px solid rgba(255, 255, 255, 0.15); /* thin white border */
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.8),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.todo-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #38bdf8;
+}
+
+.input-box {
+    display: flex;
+    gap: 10px;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 12px;
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+}
+
+.input-box input::placeholder {
+    color: #94a3b8;
+}
+
+.input-box button {
+    width: 50px;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #020617;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.input-box button:hover {
+    transform: scale(1.1);
+}
+
+ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+li {
+    background: rgba(2, 6, 23, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+li.completed span {
+    text-decoration: line-through;
+    opacity: 0.5;
+    filter: blur(0.5px);
+    transition: all 0.3s ease;
+}
+
+li span {
+    cursor: pointer;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Base premium button */
+.actions button {
+    position: relative;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: rgba(15, 23, 42, 0.65);
+    color: #e5e7eb;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Neon glow layer */
+.actions button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(56, 189, 248, 0.4),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effect */
+.actions button:hover::before {
+    opacity: 1;
+}
+
+.actions button:hover {
+    color: #38bdf8;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 0 10px rgba(56, 189, 248, 0.35),
+        0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+/* Edit button accent */
+.actions button.edit {
+    border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* Delete button accent */
+.actions button.delete {
+    border-color: rgba(248, 113, 113, 0.5);
+    color: #fca5a5;
+}
+
+.actions button.delete:hover {
+    color: #f87171;
+    box-shadow:
+        0 0 10px rgba(248, 113, 113, 0.4),
+        0 0 25px rgba(248, 113, 113, 0.2);
+}
+
+/* Inline edit style */
+.editing-text {
+    outline: none;
+    padding: 4px 6px;
+    border-radius: 6px;
+    background: rgba(56, 189, 248, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.4);
+}
+
+/* While editing, disable strike toggle */
+li.editing span {
+    cursor: text;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.task-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #38bdf8; /* neon blue tick */
+    cursor: pointer;
+}
+
